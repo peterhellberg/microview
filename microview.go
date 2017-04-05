@@ -109,7 +109,7 @@ type MicroView struct {
 }
 
 // NewMicroView creates a new MicroView instance
-func NewMicroView(rwc io.ReadWriteCloser, options ...func(*MicroView)) (*MicroView, error) {
+func NewMicroView(rwc io.ReadWriteCloser, options ...func(*MicroView)) *MicroView {
 	mv := &MicroView{
 		ReadWriteCloser: rwc,
 		delay:           50 * time.Millisecond,
@@ -119,7 +119,7 @@ func NewMicroView(rwc io.ReadWriteCloser, options ...func(*MicroView)) (*MicroVi
 		option(mv)
 	}
 
-	return mv, nil
+	return mv
 }
 
 // OpenMicroView opens a terminal connection to a MicroView
@@ -132,7 +132,7 @@ func OpenMicroView(name string, options ...func(*MicroView)) (*MicroView, error)
 	// Read the welcome message from the MicroView
 	term.Read([]byte("MicroView"))
 
-	return NewMicroView(term, options...)
+	return NewMicroView(term, options...), nil
 }
 
 // Delay between each command sent to the MicroView (25ms seems to be the minimum delay)

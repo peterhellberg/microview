@@ -3,7 +3,7 @@
 <img src="http://microview.io/images/MicroViewWithProgrammer.png" width="256" align="right">
 
 [![Build Status](https://travis-ci.org/peterhellberg/microview.svg?branch=master)](https://travis-ci.org/peterhellberg/microview)
-[![Go Report Card](https://goreportcard.com/badge/github.com/peterhellberg/microview)](https://goreportcard.com/report/github.com/peterhellberg/microview)
+[![Go Report Card](https://goreportcard.com/badge/github.com/peterhellberg/microview?branch=master)](https://goreportcard.com/report/github.com/peterhellberg/microview)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat)](https://godoc.org/github.com/peterhellberg/microview)
 [![License MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/peterhellberg/microview/blob/master/LICENSE)
 

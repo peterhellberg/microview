@@ -90,3 +90,5 @@ func main() {
 	)
 }
 ```
+
+![rectangles](https://cloud.githubusercontent.com/assets/565124/24702712/5bc3e85e-1a00-11e7-8554-4b794e1b700a.png)

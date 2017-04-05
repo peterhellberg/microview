@@ -6,7 +6,7 @@
 [![License MIT](https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/peterhellberg/microview/blob/master/LICENSE)
 
 
-Go library used to remote control a [MicroView](http://microview.io/).
+Go library used to remote control a [MicroView](http://microview.io/)
 
 ## Requirements
 
@@ -22,9 +22,9 @@ Go library used to remote control a [MicroView](http://microview.io/).
 
 ### MicroView Arduino Library
 
-**Note:** This package requires the use of a newer version (`v1.07b` or later) of the
+**Note:** This package requires the use of a newer version of the
 [MicroView Arduino Library](https://github.com/geekammo/MicroView-Arduino-Library)
-than what is currently available in the Arduino Library Manager.
+(`v1.07b` or later) than what is currently available in the Arduino Library Manager.
 
 So just follow these steps instead:
 
@@ -54,4 +54,4 @@ void loop() {
 }
 ```
 
-![MicroView With Programmer](http://microview.io/images/MicroViewWithProgrammer.png)
+<img src="http://microview.io/images/MicroViewWithProgrammer.png" width=256>

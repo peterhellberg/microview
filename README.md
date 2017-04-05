@@ -8,13 +8,7 @@
 
 Go library used to remote control a [MicroView](http://microview.io/).
 
-**Note:** This package requires the use of a newer version (`v1.07b` or later) of the
-[MicroView Arduino Library](https://github.com/geekammo/MicroView-Arduino-Library)
-than what is currently available in the Arduino Library Manager.
-
 ## Requirements
-
-![MicroView With Programmer](http://microview.io/images/MicroViewWithProgrammer.png)
 
 - [MicroView - OLED Arduino Module](https://www.sparkfun.com/products/12923)
 - [USB Programmer](https://www.sparkfun.com/products/12924)
@@ -27,6 +21,12 @@ than what is currently available in the Arduino Library Manager.
     go get -u github.com/peterhellberg/microview
 
 ### MicroView Arduino Library
+
+**Note:** This package requires the use of a newer version (`v1.07b` or later) of the
+[MicroView Arduino Library](https://github.com/geekammo/MicroView-Arduino-Library)
+than what is currently available in the Arduino Library Manager.
+
+So just follow these steps instead:
 
 1. Change directory to Arduino's main directory (`~/Documents/Arduino/` in my case)
 2. cd libraries
@@ -53,3 +53,5 @@ void loop() {
   uView.checkComm();
 }
 ```
+
+![MicroView With Programmer](http://microview.io/images/MicroViewWithProgrammer.png)

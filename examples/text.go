@@ -18,7 +18,7 @@ func main() {
 
 	flag.Parse()
 
-	mv, err := NewMicroView(*name)
+	mv, err := OpenMicroView(*name)
 	if err != nil {
 		log.Fatal(err)
 	}

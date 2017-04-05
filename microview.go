@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"image"
 	"image/color"
+	"io"
 	"time"
 
 	term "github.com/pkg/term"
@@ -61,12 +62,26 @@ type Command []byte
 
 // MicroView represents a remote MicroView micro controller
 type MicroView struct {
-	term  *term.Term
+	io.ReadWriteCloser
 	delay time.Duration
 }
 
 // NewMicroView creates a new MicroView instance
-func NewMicroView(name string, options ...func(*MicroView)) (*MicroView, error) {
+func NewMicroView(rwc io.ReadWriteCloser, options ...func(*MicroView)) (*MicroView, error) {
+	mv := &MicroView{
+		ReadWriteCloser: rwc,
+		delay:           50 * time.Millisecond,
+	}
+
+	for _, option := range options {
+		option(mv)
+	}
+
+	return mv, nil
+}
+
+// OpenMicroView opens a terminal connection to a MicroView
+func OpenMicroView(name string, options ...func(*MicroView)) (*MicroView, error) {
 	term, err := term.Open(name, term.Speed(115200))
 	if err != nil {
 		return nil, err
@@ -75,16 +90,7 @@ func NewMicroView(name string, options ...func(*MicroView)) (*MicroView, error) 
 	// Read the welcome message from the MicroView
 	term.Read([]byte("MicroView"))
 
-	mv := &MicroView{
-		term:  term,
-		delay: 50 * time.Millisecond,
-	}
-
-	for _, option := range options {
-		option(mv)
-	}
-
-	return mv, nil
+	return NewMicroView(term, options...)
 }
 
 // Delay between each command sent to the MicroView (25ms seems to be the minimum delay)
@@ -97,7 +103,7 @@ func Delay(d time.Duration) func(*MicroView) {
 // Run commands
 func (mv *MicroView) Run(cmds ...Command) {
 	for _, cmd := range cmds {
-		mv.term.Write(cmd)
+		mv.Write(cmd)
 
 		time.Sleep(mv.delay)
 	}
@@ -106,7 +112,7 @@ func (mv *MicroView) Run(cmds ...Command) {
 // DrawString draws the provided string at x,y
 func (mv *MicroView) DrawString(x, y uint8, s string) {
 	for i, r := range s {
-		mv.term.Write(DrawChar(x+uint8(i*6), y, r))
+		mv.Write(DrawChar(x+uint8(i*6), y, r))
 
 		time.Sleep(mv.delay)
 	}
@@ -115,7 +121,7 @@ func (mv *MicroView) DrawString(x, y uint8, s string) {
 // Set the pixel at x,y to WHITE or BLACK based on the provided color
 func (mv *MicroView) Set(x, y int, c color.Color) {
 	if r, g, b, _ := c.RGBA(); r+g+b > 0 {
-		mv.term.Write(PixelWithColorAndMode(uint8(x), uint8(y), WHITE, NORM))
+		mv.Write(PixelWithColorAndMode(uint8(x), uint8(y), WHITE, NORM))
 		time.Sleep(mv.delay)
 		return
 	}

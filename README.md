@@ -1,6 +1,6 @@
 # microview
 
-<img src="http://microview.io/images/MicroViewWithProgrammer.png" width="256" align="right">
+<img src="https://cdn.rawgit.com/geekammo/learn-website-source/master/images/MicroViewWithProgrammer.png" width="256" align="right">
 
 [![Build Status](https://travis-ci.org/peterhellberg/microview.svg?branch=master)](https://travis-ci.org/peterhellberg/microview)
 [![Go Report Card](https://goreportcard.com/badge/github.com/peterhellberg/microview?branch=master)](https://goreportcard.com/report/github.com/peterhellberg/microview)
